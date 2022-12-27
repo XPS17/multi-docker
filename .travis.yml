@@ -14,3 +14,8 @@ after_success:
   - docker build -t xps17/multi-nginx ./nginx
   - docker build -t xps17/multi-server ./server
   - docker build -t xps17/multi-worker ./worker
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - docker push stephengrider/multi-client
+  - docker push stephengrider/multi-nginx
+  - docker push stephengrider/multi-server
+  - docker push stephengrider/multi-worker
